@@ -1,15 +1,19 @@
 class Api::V1::PlayersController < ApplicationController
 
     def create
-        customer = Customer.find_or_create_by(customer_params)
-        if customer.save
-            render({json: customer, except: [:created_at, :updated_at]})
+        player = Player.find_or_create_by(player_params)
+        if player.save
+            render({json: player, except: [:password_digest, :created_at, :updated_at]})
         else
-            render json: customer.errors, status: :unprocessable_entity
+            render json: player.errors, status: :unprocessable_entity
         end
     end
-  
-    def customer_params
+
+    def show
+
+    end
+    
+    def player_params
         params.require(:player).permit(:username, :email)
     end
 
