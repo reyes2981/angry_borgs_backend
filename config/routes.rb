@@ -7,3 +7,6 @@ Rails.application.routes.draw do
     end
   end
 end
+
+# PLAYER LOG IN
+post "/login", to: "sessions#create"
