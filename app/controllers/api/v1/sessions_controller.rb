@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 
+    # POST request 
     def create
         player = Player.find_by(username: params[:_json])
             if player
@@ -11,9 +12,5 @@ class SessionsController < ApplicationController
 
     end
 
-    def destroy
-        session.delete :player_id
-        #head :no_content
-    end
 
 end
