@@ -8,6 +8,7 @@ class Api::V1::PlayersController < ApplicationController
     def show
         player = Playerplayer.find(params[:id])
             if player
+                login!
                render json: {
             player: player
             }
