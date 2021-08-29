@@ -15,7 +15,7 @@ end
 def authorized_player?
        player == current_player
 end
-def logout!
+def logout
        session.clear
 end
 def set_player
