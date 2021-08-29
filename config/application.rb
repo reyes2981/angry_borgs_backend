@@ -21,6 +21,11 @@ Bundler.require(*Rails.groups)
 
 module AngryBorgsBackend
   class Application < Rails::Application
+
+    # cookies and session middleware
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
