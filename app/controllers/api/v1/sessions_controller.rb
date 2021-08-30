@@ -3,8 +3,7 @@ class SessionsController < ApplicationController
     # POST request 
     def create
         player = Player.find_by(username: session_params[:username])
-      
-        if player && @player.authenticate(session_params[:email])
+        if player && player.authenticate(session_params[:email])
           login!
           render json: {
             logged_in: true,
@@ -42,10 +41,6 @@ class SessionsController < ApplicationController
           }
     end
 
-    private
-    
-    def session_params
-        params.require(:player).permit(:username, :email)
-    end
+
 
 end
