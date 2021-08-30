@@ -6,30 +6,19 @@ class Api::V1::PlayersController < ApplicationController
     end
 
     def create
-        player = Player.create!(player_params)
-             if player.save
-                render json: { player: Player.new(player)}, status: :created
-             else
-                 render json: {
-                      status: 500, 
-                      errors: player.errors }
-         end
+        player = Player.create(player_params)
+        @player = Player.create(player_params)
+        if @player.save
+          render json: { player: PlayerSerializer.new(@player)}, status: :created
+        else
+          render json: {error: "Could not create user"}, status: :unprocessible_entity
+        end
     end
       
 
     def show
         player = Player.find(player_params)
-            if player
-                login
-               render json: {
-            player: player
-            }
-            else
-               render json: {
-               status: 500,
-               errors: ['player not found']
-             }
-            end
+         
     end
    
 
