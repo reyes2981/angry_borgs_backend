@@ -7,9 +7,8 @@ class Api::V1::PlayersController < ApplicationController
 
     def create
         player = Player.create(player_params)
-        @player = Player.create(player_params)
-        if @player.save
-          render json: { player: PlayerSerializer.new(@player)}, status: :created
+        if player.save
+          render json: { player: PlayerSerializer.new(player)}, status: :created
         else
           render json: {error: "Could not create user"}, status: :unprocessible_entity
         end
