@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-bobHope92 = Player.create(username: 'BobHope92')
+bobHope92 = Player.create(email: "bobHope92@yahoo.com", username: "bobHope92")
 Score.create(score: 1, player_id: 7)
