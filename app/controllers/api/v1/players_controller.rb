@@ -5,14 +5,6 @@ class Api::V1::PlayersController < ApplicationController
         render json: PlayerSerializer.new(players)
     end
 
-    def new
-        player = Player.new
-    end
-
-    def show
-        player = Player.find(params[:id])
-    end
-
     def create
         player = Player.create(player_params)
         if player.save
@@ -23,6 +15,10 @@ class Api::V1::PlayersController < ApplicationController
     end
       
 
+    def show
+        player = Player.find(player_params)
+         
+    end
 
     def delete
           player = Player.find_by(id: params[:id])
@@ -34,7 +30,7 @@ class Api::V1::PlayersController < ApplicationController
     private # review private methods - I think they are methods that only developer can access? 
 
     def player_params
-        params.require(:player).permit(:username, :email)
+        params.require(:player).permit(:playername, :email)
     end
 
 end
