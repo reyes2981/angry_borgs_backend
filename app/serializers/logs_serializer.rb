@@ -1,6 +1,6 @@
-class PlayerSerializer
+class LogsSerializer
     include FastJsonapi::ObjectSerializer
-    attributes :username, :email
+    attributes :title, :body
 
     
     
